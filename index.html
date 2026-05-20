@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Vira-Latas Metaleiros — Hamburg's scrappiest metal crew</title>
+  <meta name="description" content="Hamburg's scrappiest metalheads. A crew of Brazilians and mutts united by riffs, beer, and the long walk to the venue. Find upcoming shows and join the pack." />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:title"       content="Vira-Latas Metaleiros" />
+  <meta property="og:description" content="Hamburg's scrappiest metalheads. Join the pack. 🤘" />
+  <meta property="og:image"       content="./assets/og-image.png" />
+  <meta property="og:url"         content="https://PLACEHOLDER.github.io/viralatas-webpage" />
+  <meta name="twitter:card"       content="summary_large_image" />
+  <meta name="twitter:title"      content="Vira-Latas Metaleiros" />
+  <meta name="twitter:description" content="Hamburg's scrappiest metalheads. Join the pack. 🤘" />
+  <meta name="twitter:image"      content="./assets/og-image.png" />
+
+  <!-- Theme / PWA -->
+  <meta name="theme-color" content="#0d0d10" />
+
+  <!-- Favicon -->
+  <link rel="icon"            href="./assets/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="./assets/logo.png" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&family=Rye&family=Bungee&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ─────── TOPBAR ─────── -->
+<header class="topbar">
+  <a class="brand" href="#" aria-label="Vira-Latas Metaleiros — home">
+    <img src="./assets/logo.png" width="38" height="38" alt="" />
+    <span data-t="brand">Vira-Latas<br /><small>Metaleiros · HH</small></span>
+  </a>
+
+  <nav aria-label="Main navigation">
+    <a href="#shows"   data-t="nav.shows">Shows</a>
+    <a href="#about"   data-t="nav.about">About</a>
+    <a href="#connect" data-t="nav.connect">Connect</a>
+  </nav>
+
+  <fieldset class="lang" aria-label="Language">
+    <legend class="sr-only">Language</legend>
+    <button data-lang="en" aria-pressed="true">EN</button>
+    <button data-lang="pt" aria-pressed="false">PT</button>
+    <button data-lang="de" aria-pressed="false">DE</button>
+  </fieldset>
+
+  <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- Mobile nav overlay -->
+<div class="mobile-menu" id="mobile-menu" hidden aria-label="Mobile navigation">
+  <nav>
+    <a href="#shows"   data-t="nav.shows">Shows</a>
+    <a href="#about"   data-t="nav.about">About</a>
+    <a href="#connect" data-t="nav.connect">Connect</a>
+  </nav>
+  <fieldset class="lang" aria-label="Language">
+    <legend class="sr-only">Language</legend>
+    <button data-lang="en" aria-pressed="true">EN</button>
+    <button data-lang="pt" aria-pressed="false">PT</button>
+    <button data-lang="de" aria-pressed="false">DE</button>
+  </fieldset>
+</div>
+
+<main>
+
+<!-- ─────── HERO ─────── -->
+<section class="hero grain" aria-label="Hero">
+  <div class="stage-lights" aria-hidden="true"></div>
+  <div class="crowd"        aria-hidden="true"></div>
+  <div class="hero-inner">
+    <div class="pretitle" data-t="hero.pre">EST. HAMBURG · 2021 · 🤘</div>
+    <div class="hero-logo-wrap">
+      <img src="./assets/logo.png"
+           alt="Vira-Latas Metaleiros mascot — a friendly stray dog flanked by a fist throwing the horns and two beer steins"
+           width="340" height="340" />
+    </div>
+    <h1 class="display">
+      <span class="first">Vira-Latas</span>
+      <span class="second">Metaleiros</span>
+    </h1>
+    <p class="tagline" data-t="tagline">Hamburg's scrappiest metalheads</p>
+    <p class="pitch"   data-t="pitch">We're a pack of strays from Brazil, Hamburg, and everywhere in between — bonded by riffs, beer, and the long walk to the venue.</p>
+    <div class="cta-row">
+      <a class="btn btn-caramel" href="#shows"><span data-t="cta_shows">See upcoming shows</span> →</a>
+      <a class="btn"             href="#connect"><span data-t="cta_join">Run with the pack</span></a>
+    </div>
+  </div>
+  <div class="scroll-cue" aria-hidden="true">
+    <span>SCROLL</span>
+    <span class="dot"></span>
+  </div>
+</section>
+
+<!-- ─────── MARQUEE STRIP ─────── -->
+<div class="next-strip" aria-hidden="true">
+  <div class="marquee-track" id="marquee-track">
+    <!-- populated by script.js from shows.json -->
+    <span>⚡ LOADING…</span>
+  </div>
+</div>
+
+<!-- ─────── ABOUT ─────── -->
+<div class="torn" style="--c: var(--ink); background-color: var(--ink);" aria-hidden="true"></div>
+<section id="about" class="about grain-light">
+  <div class="grid">
+
+    <!-- Sidecar (sticky cards) -->
+    <aside class="sidecar">
+      <div class="def-card reveal">
+        <div class="head">DEFINITION · BR-PT</div>
+        <div class="word">vi·ra-la·ta</div>
+        <div class="pos">noun, masculine</div>
+        <ol>
+          <li><span>1.</span> A mutt. A stray dog of no particular pedigree.</li>
+          <li><span>2.</span> The friendliest creature on any Brazilian street.</li>
+          <li><span>3.</span> <em>fig.</em> The lovable underdog. Us.</li>
+        </ol>
+      </div>
+
+      <div class="stats-card reveal reveal-delay-1">
+        <div class="tag">⚡ <span data-t="stats_tag">BY THE NUMBERS</span></div>
+        <ul>
+          <li>
+            <span class="n">40<small style="font-size:.55em">+</small></span>
+            <span class="l" data-t="stat_regulars">regulars in the pack</span>
+          </li>
+          <li>
+            <span class="n">7</span>
+            <span class="l" data-t="stat_nat">nationalities</span>
+          </li>
+          <li>
+            <span class="n">∞</span>
+            <span class="l" data-t="stat_ubers">Ubers split at 2am</span>
+          </li>
+          <li>
+            <span class="n">'21</span>
+            <span class="l" data-t="stat_since">first show together</span>
+          </li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- Copy -->
+    <div class="copy">
+      <div class="kicker reveal" data-t="about_kicker">OUR STORY</div>
+      <h2 class="reveal reveal-delay-1">
+        <span data-t="about_h_a">Mutts of</span><br />
+        <span class="ink" data-t="about_h_b">the metal scene</span>
+      </h2>
+      <p class="reveal reveal-delay-2" data-t="about_p1">We're a friend group, not a band. Majority Brazilian, with members from Portugal, Argentina, Germany, Poland, the UK and beyond — all of us washed up in Hamburg, all of us metalheads.</p>
+      <blockquote class="pull reveal reveal-delay-2">
+        <span data-t="about_pull">A <em>vira-lata</em> isn't an insult. It's a badge of honour — the underdog, the survivor, the friendliest dog on the street.</span>
+      </blockquote>
+      <p class="reveal reveal-delay-3" data-t="about_p3">We started by meeting at gigs, sharing tickets, splitting Ubers back from Markthalle at 2am. Now we travel as a pack — Wacken, Hellfest, every Tuesday-night thrash show nobody else heard about.</p>
+      <p class="reveal reveal-delay-3" data-t="about_p4"><strong>No fee, no application, no gatekeeping.</strong> Just: come headbang with us and drink a beer.</p>
+    </div>
+
+  </div>
+</section>
+<div class="torn torn-flip" style="--c: var(--ink); background-color: var(--bone);" aria-hidden="true"></div>
+
+<!-- ─────── SHOWS ─────── -->
+<section id="shows" class="shows grain">
+  <div class="head">
+    <div>
+      <div class="kicker reveal" data-t="shows_kicker">WHERE WE'LL BE HEADBANGING NEXT</div>
+      <h2 class="reveal reveal-delay-1">Up<span class="o">⚡</span>coming<br />Shows</h2>
+    </div>
+    <p class="reveal reveal-delay-2" data-t="shows_intro">Concerts the crew is going to. If you see one you like, slide into our Instagram DMs — there's always room for one more mutt in the pack.</p>
+  </div>
+  <div class="poster-list" id="poster-list" aria-label="Upcoming shows">
+    <!-- rendered by script.js -->
+  </div>
+</section>
+
+<!-- ─────── CONNECT ─────── -->
+<div class="torn" style="--c: var(--slate-deep); background-color: var(--ink);" aria-hidden="true"></div>
+<section id="connect" class="connect grain">
+  <div class="kicker reveal" data-t="connect_kicker">RUN WITH US</div>
+  <h2 class="reveal reveal-delay-1" data-t="connect_h">Plug into the pack</h2>
+  <p class="reveal reveal-delay-2" data-t="connect_body">Instagram is the public face — photos, stories, post-show chaos. Everything else runs on three little tools the crew built itself.</p>
+
+  <!-- Instagram hero card -->
+  <a class="ig-hero reveal reveal-delay-3" href="https://instagram.com/PLACEHOLDER" target="_blank" rel="noopener" aria-label="Follow Vira-Latas Metaleiros on Instagram">
+    <svg class="ig-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.9.9 1.4.2.4.4 1.1.4 2.2.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.9.7-1.4.9-.4.2-1.1.4-2.2.4-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.9-.9-1.4-.2-.4-.4-1.1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.9-.7 1.4-.9.4-.2 1.1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.2 0-3.5 0-4.7.1-1.1.1-1.7.2-2.1.4-.5.2-.9.4-1.2.8-.4.4-.6.8-.8 1.2-.2.4-.3 1-.4 2.1-.1 1.2-.1 1.5-.1 4.7s0 3.5.1 4.7c.1 1.1.2 1.7.4 2.1.2.5.4.9.8 1.2.4.4.8.6 1.2.8.4.2 1 .3 2.1.4 1.2.1 1.5.1 4.7.1s3.5 0 4.7-.1c1.1-.1 1.7-.2 2.1-.4.5-.2.9-.4 1.2-.8.4-.4.6-.8.8-1.2.2-.4.3-1 .4-2.1.1-1.2.1-1.5.1-4.7s0-3.5-.1-4.7c-.1-1.1-.2-1.7-.4-2.1-.2-.5-.4-.9-.8-1.2-.4-.4-.8-.6-1.2-.8-.4-.2-1-.3-2.1-.4-1.2-.1-1.5-.1-4.7-.1zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8zm0 8.1a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4zm5.1-8.3a1.15 1.15 0 1 1 0-2.3 1.15 1.15 0 0 1 0 2.3z"/>
+    </svg>
+    <div>
+      <h3>Instagram</h3>
+      <div class="handle">@PLACEHOLDER</div>
+      <div class="note" data-t="ig_note">Photos, stories, post-show chaos</div>
+    </div>
+    <span class="arrow" aria-hidden="true">↗</span>
+  </a>
+
+  <!-- Crew-built tools -->
+  <div class="tools-head reveal">
+    <span data-t="tools_head">Tools the pack built itself</span>
+  </div>
+  <div class="tools">
+    <a class="tool t1 reveal reveal-delay-1" href="#" aria-label="Companion App">
+      <span class="gly" aria-hidden="true">VL</span>
+      <h4>Companion App</h4>
+      <p class="desc" data-t="tool_companion">Find the pack at the show. Live "we're here" pins, meetup spot before doors, who's already inside.</p>
+      <div class="pill"><span data-t="tool_companion_pill">iOS · Android</span><span class="arr" aria-hidden="true">↗</span></div>
+    </a>
+    <a class="tool t2 reveal reveal-delay-2" href="#" aria-label="Moshsplit">
+      <span class="gly" aria-hidden="true">÷</span>
+      <h4>Moshsplit</h4>
+      <p class="desc" data-t="tool_moshsplit">Split the Uber, split the kebab, split the ticket runs. So nobody is doing math at 3am after the gig.</p>
+      <div class="pill"><span data-t="tool_moshsplit_pill">Web app · In-pack only</span><span class="arr" aria-hidden="true">↗</span></div>
+    </a>
+    <a class="tool t3 reveal reveal-delay-3" href="#" aria-label="Setlist Viralatas">
+      <span class="gly" aria-hidden="true">♬</span>
+      <h4>Setlist Viralatas</h4>
+      <p class="desc" data-t="tool_setlist">Every gig we've been to, every setlist we moshed through, every shitty phone video. Add yours.</p>
+      <div class="pill"><span data-t="tool_setlist_pill">Open archive</span><span class="arr" aria-hidden="true">↗</span></div>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<!-- ─────── FOOTER ─────── -->
+<footer class="foot">
+  <div class="row">
+    <div class="brand">
+      <img src="./assets/logo.png" width="60" height="60" alt="" />
+      <div>
+        <div class="lockup">Vira-Latas<br />Metaleiros</div>
+        <small data-t="based">Hamburg, Germany 🤘</small>
+      </div>
+    </div>
+    <nav class="links" aria-label="Footer navigation">
+      <a href="#about"   data-t="nav.about">About</a>
+      <a href="#shows"   data-t="nav.shows">Shows</a>
+      <a href="#connect" data-t="nav.connect">Connect</a>
+      <a href="https://instagram.com/PLACEHOLDER" target="_blank" rel="noopener">@PLACEHOLDER</a>
+    </nav>
+  </div>
+  <div class="line">
+    <span data-t="footer_line">Made by mutts, for mutts. Em Hamburgo, com cerveja na mão.</span>
+    <span class="horns" aria-hidden="true"> 🤘</span>
+  </div>
+</footer>
+
+<script src="translations_en.js"></script>
+<script src="translations_pt.js"></script>
+<script src="translations_de.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

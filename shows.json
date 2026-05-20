@@ -1,0 +1,84 @@
+[
+  {
+    "date": "2026-05-22",
+    "day": "22",
+    "mon": "MAY",
+    "weekday": { "en": "FRI", "pt": "SEX", "de": "FR" },
+    "bands": ["Gojira", "Mastodon", "Lorna Shore"],
+    "venue": "Sporthalle Hamburg",
+    "city": "Hamburg",
+    "going": 11,
+    "status": "soon",
+    "url": "#"
+  },
+  {
+    "date": "2026-06-04",
+    "day": "04",
+    "mon": "JUN",
+    "weekday": { "en": "THU", "pt": "QUI", "de": "DO" },
+    "bands": ["Behemoth", "Arch Enemy"],
+    "venue": "Markthalle",
+    "city": "Hamburg",
+    "going": 7,
+    "status": "soon",
+    "url": "#"
+  },
+  {
+    "date": "2026-06-18",
+    "day": "18",
+    "mon": "JUN",
+    "weekday": { "en": "THU", "pt": "QUI", "de": "DO" },
+    "bands": ["Sepultura", "Sodom"],
+    "venue": "Gruenspan",
+    "city": "Hamburg",
+    "going": 14,
+    "note": {
+      "en": "Brazilian night \u2014 get your jersey",
+      "pt": "Noite brasileira \u2014 bota a camisa",
+      "de": "Brasilianischer Abend \u2014 Trikot mitbringen"
+    },
+    "status": "soon",
+    "url": "#"
+  },
+  {
+    "date": "2026-07-30",
+    "day": "30",
+    "mon": "JUL",
+    "weekday": { "en": "WED", "pt": "QUA", "de": "MI" },
+    "bands": ["Wacken Open Air \u2014 Day 1"],
+    "venue": "Wacken Festival Grounds",
+    "city": "Wacken",
+    "going": 22,
+    "note": {
+      "en": "The big one. We camp together.",
+      "pt": "O grande. A gente acampa junto.",
+      "de": "Der gro\u00dfe Termin. Wir campen zusammen."
+    },
+    "status": "soon",
+    "url": "#"
+  },
+  {
+    "date": "2026-09-12",
+    "day": "12",
+    "mon": "SEP",
+    "weekday": { "en": "SAT", "pt": "SAB", "de": "SA" },
+    "bands": ["Cavalera", "Vio-lence"],
+    "venue": "Logo",
+    "city": "Hamburg",
+    "going": 5,
+    "status": "later",
+    "url": "#"
+  },
+  {
+    "date": "2026-10-04",
+    "day": "04",
+    "mon": "OCT",
+    "weekday": { "en": "SUN", "pt": "DOM", "de": "SO" },
+    "bands": ["Amon Amarth", "Cannibal Corpse", "Obituary"],
+    "venue": "Barclays Arena",
+    "city": "Hamburg",
+    "going": 9,
+    "status": "later",
+    "url": "#"
+  }
+]
