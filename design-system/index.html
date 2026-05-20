@@ -1,0 +1,740 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Vira-Latas Metaleiros — Hamburg's scrappiest metal crew</title>
+<link rel="stylesheet" href="shared/brand.css" />
+<style>
+/* ─── Page-specific layout ─── */
+html,body{ background: var(--ink); color: var(--bone); overflow-x:hidden; }
+main{ position:relative; }
+
+/* sticky top bar */
+.topbar{
+  position: fixed; top:0; left:0; right:0; z-index:50;
+  display:flex; align-items:center; justify-content:space-between;
+  padding: 18px 28px;
+  background: linear-gradient(180deg, rgba(13,13,16,.92), rgba(13,13,16,.65) 70%, rgba(13,13,16,0));
+  backdrop-filter: blur(4px);
+}
+.topbar .brand{ display:flex; align-items:center; gap:10px; font-family:var(--f-pop); font-size:13px; letter-spacing:.14em; text-transform:uppercase; }
+.topbar .brand img{ width:38px; height:38px; object-fit:contain; image-rendering: optimizeQuality; }
+.topbar .brand span small{ display:block; color: rgba(242,235,222,.55); font-family: var(--f-mono); font-size:10px; letter-spacing:.2em; font-weight:400; }
+.topbar nav{ display:flex; gap: 26px; font-family: var(--f-pop); font-size: 12px; letter-spacing:.12em; text-transform:uppercase; }
+.topbar nav a{ color: var(--bone); text-decoration:none; opacity:.78; transition: opacity .15s, color .15s; }
+.topbar nav a:hover{ opacity:1; color: var(--caramel); }
+.lang{
+  display:flex; align-items:center; gap:0;
+  border:1.5px solid var(--bone); border-radius: 999px; padding:3px; background: rgba(13,13,16,.6);
+}
+.lang button{
+  background: transparent; border:0; color: var(--bone); cursor:pointer;
+  font-family: var(--f-pop); font-size: 11px; letter-spacing:.1em;
+  padding: 6px 12px; border-radius: 999px;
+  transition: background .15s, color .15s;
+}
+.lang button[aria-pressed="true"]{ background: var(--caramel); color: var(--ink); }
+.lang button:hover:not([aria-pressed="true"]){ color: var(--caramel); }
+@media (max-width: 720px){
+  .topbar{ padding:12px 14px; }
+  .topbar nav{ display:none; }
+}
+
+/* ─── HERO ─── */
+.hero{
+  min-height: 100vh; position:relative; overflow:hidden;
+  background:
+    radial-gradient(ellipse at 50% 30%, rgba(63,77,96,.7), transparent 60%),
+    radial-gradient(ellipse at 80% 90%, rgba(217,123,44,.18), transparent 50%),
+    var(--ink);
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  padding: 120px 24px 80px;
+  text-align:center;
+}
+.hero .stage-lights{
+  position:absolute; inset:0; pointer-events:none; opacity:.55;
+  background:
+    conic-gradient(from 200deg at 50% 110%, transparent 0deg, rgba(217,123,44,.12) 8deg, transparent 16deg, rgba(242,235,222,.05) 24deg, transparent 32deg, rgba(217,123,44,.1) 40deg, transparent 48deg, rgba(242,235,222,.04) 56deg, transparent 64deg, rgba(217,123,44,.08) 72deg, transparent 80deg);
+}
+.hero .crowd{
+  position:absolute; left:0; right:0; bottom:0; height: 36%;
+  background:
+    linear-gradient(180deg, transparent 0%, rgba(13,13,16,.5) 30%, var(--ink) 95%),
+    repeating-linear-gradient(90deg, #0d0d10 0 14px, #1a1a1f 14px 22px, #0d0d10 22px 38px, #2a2a30 38px 46px);
+  mask: linear-gradient(180deg, transparent, #000 30%);
+}
+.hero .hero-inner{ position:relative; z-index:2; max-width: 1080px; width:100%; }
+.hero .pretitle{
+  font-family: var(--f-mono); font-size: 12px; letter-spacing:.4em; text-transform:uppercase;
+  color: var(--caramel); margin-bottom: 22px;
+  display:inline-flex; align-items:center; gap:10px;
+}
+.hero .pretitle::before, .hero .pretitle::after{ content:""; height:1px; width:34px; background: var(--caramel); }
+.hero h1{
+  font-family: var(--f-display);
+  font-size: clamp(56px, 14vw, 220px);
+  line-height: .82;
+  margin: 0 0 14px;
+  letter-spacing: 0;
+  text-shadow: 0 4px 0 var(--blood), 0 8px 30px rgba(0,0,0,.5);
+}
+.hero h1 .first{ display:block; color: var(--bone); }
+.hero h1 .second{ display:block; color: var(--caramel); }
+.hero h1 .amp{ color: var(--blood); display:inline-block; transform: translateY(-.08em); }
+.hero .tagline{
+  font-family: var(--f-pop); font-size: clamp(15px, 2vw, 22px);
+  letter-spacing:.1em; text-transform:uppercase;
+  color: var(--bone); margin: 18px 0 12px;
+}
+.hero .pitch{
+  max-width: 620px; margin: 0 auto 36px;
+  font-size: 17px; line-height: 1.6; color: rgba(242,235,222,.78);
+}
+.hero .cta-row{ display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+.hero-logo-wrap{
+  position:relative; width: min(340px, 55vw); aspect-ratio:1/1;
+  margin: 0 auto 8px;
+  filter: drop-shadow(0 10px 40px rgba(0,0,0,.6));
+}
+.hero-logo-wrap img{ width:100%; height:100%; object-fit:contain; }
+.hero-logo-wrap::before{
+  content:""; position:absolute; inset:-12%;
+  background: radial-gradient(circle, rgba(217,123,44,.35), transparent 65%);
+  z-index:-1; animation: pulse 4s ease-in-out infinite;
+}
+@keyframes pulse{ 0%,100%{ opacity:.6; transform:scale(1);} 50%{opacity:1; transform:scale(1.06);} }
+
+.hero .scroll-cue{
+  position:absolute; bottom: 26px; left:50%; transform: translateX(-50%);
+  font-family: var(--f-mono); font-size: 10px; letter-spacing:.3em;
+  color: rgba(242,235,222,.5); display:flex; flex-direction:column; align-items:center; gap:8px;
+  z-index:3;
+}
+.hero .scroll-cue .dot{ width:1px; height:34px; background: linear-gradient(180deg, var(--caramel), transparent); animation: drop 1.6s ease-in-out infinite; }
+@keyframes drop{ 0%,100%{ opacity:.2; transform: translateY(-8px);} 50%{opacity:1; transform: translateY(0);} }
+
+/* ─── NEXT SHOW STRIP ─── */
+.next-strip{
+  background: var(--blood); color: var(--bone);
+  padding: 14px 28px;
+  display:flex; align-items:center; justify-content:center; gap: 28px;
+  font-family: var(--f-pop); font-size: 13px; letter-spacing:.15em; text-transform:uppercase;
+  overflow:hidden; position:relative;
+}
+.next-strip .marquee{ display:flex; gap:48px; animation: scroll 30s linear infinite; white-space:nowrap; }
+.next-strip .marquee span{ display:inline-flex; align-items:center; gap:14px; }
+@keyframes scroll{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+
+/* ─── ABOUT ─── */
+.about{
+  background: var(--bone);
+  color: var(--ink);
+  position:relative;
+  padding: 120px 28px 140px;
+  overflow:hidden;
+}
+.about .grid{
+  max-width: 1180px; margin: 0 auto;
+  display:grid; grid-template-columns: 1fr 1.4fr; gap: 80px; align-items:start;
+}
+.about .kicker{
+  font-family: var(--f-mono); font-size: 11px; letter-spacing:.35em; text-transform:uppercase;
+  color: var(--blood); display:flex; align-items:center; gap:10px; margin-bottom: 26px;
+}
+.about .kicker::before{ content:""; width: 40px; height:2px; background: var(--blood); }
+.about h2{
+  font-family: var(--f-display); font-weight:400;
+  font-size: clamp(48px, 6vw, 92px); line-height:.9; margin: 0 0 30px;
+  color: var(--ink);
+  text-transform: uppercase;
+}
+.about h2 .ink{ color: var(--blood); }
+.about p{ font-size: 17px; line-height: 1.65; margin: 0 0 22px; max-width: 60ch; }
+.about .pull{
+  font-family: var(--f-stencil);
+  font-size: clamp(22px, 2.6vw, 32px);
+  line-height: 1.15;
+  border-left: 4px solid var(--caramel);
+  padding: 6px 0 8px 20px;
+  margin: 28px 0;
+  color: var(--ink);
+}
+.about .pull em{ font-style: normal; color: var(--blood); }
+
+/* sidecar: definition card + mascot peek */
+.about .sidecar{ position: sticky; top: 100px; display:flex; flex-direction:column; gap: 32px; }
+.def-card{
+  background: var(--ink); color: var(--bone);
+  padding: 26px 24px; position:relative;
+  transform: rotate(-1.5deg);
+  box-shadow: 8px 8px 0 var(--caramel), 16px 16px 0 var(--blood);
+}
+.def-card .head{
+  font-family: var(--f-mono); font-size: 10px; letter-spacing:.25em;
+  color: rgba(242,235,222,.55); text-transform:uppercase; margin-bottom: 12px;
+}
+.def-card .word{
+  font-family: var(--f-display); font-size: 44px; line-height:1; margin:0 0 4px; color: var(--caramel);
+}
+.def-card .pos{ font-family: var(--f-mono); font-size: 11px; color: rgba(242,235,222,.55); font-style: italic; margin-bottom: 14px; }
+.def-card ol{ padding-left: 18px; margin:0; }
+.def-card li{ font-size: 14px; line-height: 1.55; margin-bottom: 8px; }
+.def-card li span{ color: var(--caramel); }
+/* By-the-numbers card — sits below the dictionary in About */
+.stats-card{
+  background: var(--bone-soft);
+  color: var(--ink);
+  padding: 22px 24px 18px;
+  border: 1.5px solid var(--ink);
+  transform: rotate(.9deg);
+  box-shadow: 6px 6px 0 var(--ink);
+}
+.stats-card .tag{ font-family: var(--f-mono); font-size: 10px; letter-spacing:.25em; text-transform:uppercase; color: var(--blood); margin-bottom: 12px; }
+.stats-card ul{ list-style:none; padding:0; margin:0; display:grid; grid-template-columns: 1fr 1fr; gap: 14px 18px; }
+.stats-card li{ display:flex; flex-direction:column; gap: 2px; }
+.stats-card .n{ font-family: var(--f-display); font-size: 38px; line-height:.9; color: var(--blood); }
+.stats-card .l{ font-family: var(--f-mono); font-size: 10px; letter-spacing:.12em; text-transform: uppercase; color: rgba(13,13,16,.7); }
+
+@media (max-width: 900px){
+  .about .grid{ grid-template-columns: 1fr; gap: 40px; }
+  .about .sidecar{ position: static; }
+}
+
+/* ─── SHOWS ─── */
+.shows{
+  background: var(--ink); position:relative; overflow:hidden;
+  padding: 120px 0 160px;
+}
+.shows::before{
+  content:""; position:absolute; inset:0;
+  background: radial-gradient(ellipse at 20% 0%, rgba(63,77,96,.4), transparent 50%),
+              radial-gradient(ellipse at 80% 100%, rgba(192,30,30,.18), transparent 55%);
+  pointer-events:none;
+}
+.shows .head{
+  max-width: 1180px; margin: 0 auto 60px; padding: 0 28px;
+  display:grid; grid-template-columns: 1fr auto; gap: 30px; align-items:end; position:relative;
+}
+.shows .head .kicker{
+  font-family: var(--f-mono); font-size: 11px; letter-spacing:.35em; text-transform:uppercase;
+  color: var(--caramel); display:flex; align-items:center; gap:10px; margin-bottom: 14px;
+}
+.shows .head .kicker::before{ content:""; width: 40px; height:2px; background: var(--caramel); }
+.shows h2{
+  font-family: var(--f-display); font-weight:400;
+  font-size: clamp(56px, 8vw, 120px); line-height:.85; margin: 0;
+  color: var(--bone);
+  text-transform: uppercase;
+}
+.shows h2 .o{ color: var(--blood); }
+.shows .head p{ max-width: 380px; font-size: 15px; line-height:1.6; color: rgba(242,235,222,.7); margin:0; }
+
+/* poster cards — vertical timeline / poster wall hybrid */
+.poster-list{
+  max-width: 1180px; margin: 0 auto; padding: 0 28px;
+  display:flex; flex-direction:column; gap: 0;
+  position: relative;
+}
+.poster-list::before{
+  content:""; position:absolute; left: 140px; top: 0; bottom: 0;
+  width: 2px; background: repeating-linear-gradient(180deg, var(--rule) 0 12px, transparent 12px 20px);
+}
+@media (max-width: 720px){ .poster-list::before{ left: 70px; } }
+
+.poster{
+  display:grid; grid-template-columns: 140px 1fr; gap: 36px;
+  padding: 32px 0;
+  border-bottom: 1px dashed var(--rule);
+  position: relative;
+  transition: background .2s;
+}
+.poster:hover{ background: rgba(217,123,44,.05); }
+.poster:last-child{ border-bottom:0; }
+
+.poster .date{
+  text-align:right; padding-right: 30px; position:relative;
+}
+.poster .date::after{
+  content:""; position:absolute; right: -8px; top: 22px; width: 14px; height:14px;
+  background: var(--caramel); transform: rotate(45deg);
+  box-shadow: 0 0 0 4px var(--ink);
+}
+.poster .day{ font-family: var(--f-display); font-size: 64px; line-height:.9; color: var(--bone); display:block; }
+.poster .mon{ font-family: var(--f-pop); font-size: 14px; letter-spacing:.2em; color: var(--caramel); display:block; margin-top: 2px; }
+.poster .wd{ font-family: var(--f-mono); font-size: 11px; letter-spacing:.25em; color: rgba(242,235,222,.5); display:block; margin-top: 4px; }
+
+.poster .body{ display:grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; }
+.poster .bands{ font-family: var(--f-display); font-size: clamp(28px, 3.6vw, 48px); line-height:.95; color: var(--bone); margin: 0; }
+.poster .bands .b{ display: block; }
+.poster .bands .plus{ color: var(--caramel); font-size: .7em; padding: 0 8px; }
+.poster .meta{
+  display:flex; gap: 18px; margin-top: 10px; flex-wrap:wrap;
+  font-family: var(--f-mono); font-size: 12px; letter-spacing:.1em; color: rgba(242,235,222,.7);
+}
+.poster .meta span{ display:inline-flex; align-items:center; gap:6px; }
+.poster .meta .going{ color: var(--caramel); }
+.poster .note{ margin-top: 12px; font-family: var(--f-pop); font-size: 11px; letter-spacing:.12em; color: var(--blood); text-transform:uppercase; }
+.poster .right{ display:flex; flex-direction:column; align-items:flex-end; gap: 10px; }
+.poster .tix{
+  font-family: var(--f-pop); font-size: 12px; letter-spacing:.12em; text-transform:uppercase;
+  border: 1.5px solid var(--bone); color: var(--bone); text-decoration:none;
+  padding: 10px 16px;
+  transition: all .15s;
+}
+.poster .tix:hover{ background: var(--caramel); border-color: var(--caramel); color: var(--ink); }
+.poster .going-pill{
+  font-family: var(--f-mono); font-size: 10px; letter-spacing:.2em; color: var(--ink);
+  background: var(--caramel); padding: 4px 10px;
+}
+
+@media (max-width: 720px){
+  .poster{ grid-template-columns: 70px 1fr; gap: 16px; padding: 24px 0; }
+  .poster .date{ padding-right: 14px; }
+  .poster .day{ font-size: 36px; }
+  .poster .mon{ font-size: 11px; }
+  .poster .wd{ font-size: 9px; }
+  .poster .body{ grid-template-columns: 1fr; gap: 14px; }
+  .poster .right{ flex-direction:row; }
+}
+
+/* ─── CONNECT ─── */
+.connect{
+  background:
+    radial-gradient(circle at 30% 50%, rgba(217,123,44,.25), transparent 60%),
+    var(--slate-deep);
+  padding: 140px 28px;
+  position:relative; overflow:hidden;
+  text-align:center;
+}
+.connect .kicker{
+  font-family: var(--f-mono); font-size: 11px; letter-spacing:.35em; text-transform:uppercase;
+  color: var(--caramel); margin-bottom: 18px;
+}
+.connect h2{
+  font-family: var(--f-display); font-weight:400;
+  font-size: clamp(48px, 7vw, 100px); line-height:.9; margin: 0 0 22px;
+  color: var(--bone); text-transform:uppercase;
+}
+.connect p{ max-width: 620px; margin: 0 auto 48px; font-size: 17px; line-height: 1.6; color: rgba(242,235,222,.82); }
+
+/* Instagram hero card — the public face */
+.connect .ig-hero{
+  max-width: 900px; margin: 0 auto 26px;
+  display:flex; align-items:center; gap: 28px;
+  padding: 28px 32px;
+  background: var(--ink);
+  border: 2px solid var(--bone);
+  text-decoration:none; color: var(--bone);
+  text-align:left;
+  position:relative; overflow:hidden;
+  transition: transform .15s, box-shadow .15s, background .15s;
+}
+.connect .ig-hero:hover{ transform: translate(-4px,-4px); box-shadow: 10px 10px 0 var(--caramel); background: linear-gradient(135deg, #5e3290, #c01e1e, #f3953f); }
+.connect .ig-hero:hover .icon{ fill: var(--bone); }
+.connect .ig-hero .icon{ width: 56px; height: 56px; fill: var(--caramel); flex: 0 0 auto; transition: fill .15s; }
+.connect .ig-hero h3{ font-family: var(--f-display); font-size: 38px; margin: 0 0 4px; text-transform: uppercase; line-height:1; }
+.connect .ig-hero .handle{ font-family: var(--f-mono); font-size: 13px; letter-spacing:.08em; color: rgba(242,235,222,.7); }
+.connect .ig-hero .note{ font-family: var(--f-pop); font-size: 11px; letter-spacing:.12em; text-transform:uppercase; color: rgba(242,235,222,.6); margin-top: 6px; }
+.connect .ig-hero .arrow{ position:absolute; top: 22px; right: 22px; font-family: var(--f-display); font-size: 28px; color: var(--bone); transition: transform .2s; }
+.connect .ig-hero:hover .arrow{ transform: translate(6px,-6px); }
+
+/* Crew-built tools row */
+.connect .tools-head{
+  max-width: 900px; margin: 36px auto 14px;
+  display:flex; align-items:center; gap: 14px;
+  font-family: var(--f-mono); font-size: 11px; letter-spacing:.3em; text-transform:uppercase;
+  color: rgba(242,235,222,.5); text-align:left;
+}
+.connect .tools-head::before, .connect .tools-head::after{ content:""; flex:1; height:1px; background: var(--rule); }
+.connect .tools{
+  max-width: 900px; margin: 0 auto;
+  display:grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+}
+.connect .tool{
+  display:flex; flex-direction:column;
+  padding: 26px 22px;
+  background: var(--ink);
+  border: 1.5px solid var(--bone);
+  text-decoration:none; color: var(--bone);
+  text-align:left; position:relative; overflow:hidden;
+  transition: transform .15s, box-shadow .15s, background .15s, color .15s;
+}
+.connect .tool:hover{ transform: translate(-3px,-3px); box-shadow: 8px 8px 0 var(--caramel); }
+.connect .tool.t1:hover{ background: var(--caramel); color: var(--ink); border-color: var(--caramel); box-shadow: 8px 8px 0 var(--blood); }
+.connect .tool.t2:hover{ background: var(--blood); color: var(--bone); border-color: var(--blood); box-shadow: 8px 8px 0 var(--caramel); }
+.connect .tool.t3:hover{ background: var(--bone); color: var(--ink); border-color: var(--bone); box-shadow: 8px 8px 0 var(--caramel); }
+.connect .tool .gly{
+  font-family: var(--f-display); font-size: 56px; line-height:.9;
+  color: var(--caramel); margin-bottom: 12px;
+  transition: color .15s;
+}
+.connect .tool.t1:hover .gly{ color: var(--ink); }
+.connect .tool.t2:hover .gly{ color: var(--bone); }
+.connect .tool.t3:hover .gly{ color: var(--ink); }
+.connect .tool h4{ font-family: var(--f-display); font-size: 26px; margin: 0 0 6px; text-transform:uppercase; line-height:1; }
+.connect .tool .desc{ font-family: var(--f-body); font-size: 13px; line-height: 1.5; opacity: .82; flex: 1; }
+.connect .tool .pill{
+  margin-top: 14px;
+  font-family: var(--f-mono); font-size: 10px; letter-spacing:.18em; text-transform:uppercase;
+  display:flex; align-items:center; gap: 8px;
+}
+.connect .tool .pill .arr{ margin-left:auto; font-family: var(--f-display); font-size: 18px; }
+@media (max-width: 720px){
+  .connect .tools{ grid-template-columns: 1fr; }
+  .connect .ig-hero{ flex-direction: column; text-align: center; gap: 14px; padding: 30px 22px; }
+  .connect .ig-hero .arrow{ display:none; }
+}
+
+/* ─── FOOTER ─── */
+.foot{
+  background: var(--ink); padding: 70px 28px 30px;
+  border-top: 1px solid var(--rule);
+}
+.foot .row{
+  max-width: 1180px; margin: 0 auto;
+  display:flex; align-items:center; justify-content:space-between; gap: 30px; flex-wrap:wrap;
+}
+.foot .brand{ display:flex; align-items:center; gap: 14px; }
+.foot .brand img{ width: 60px; height: 60px; object-fit:contain; }
+.foot .brand .lockup{ font-family: var(--f-display); font-size: 22px; line-height:1; text-transform:uppercase; }
+.foot .brand small{ display:block; font-family: var(--f-mono); font-size: 11px; letter-spacing:.18em; color: rgba(242,235,222,.55); margin-top: 4px; }
+.foot .links{ display:flex; gap: 22px; }
+.foot .links a{ color: var(--bone); text-decoration:none; font-family: var(--f-pop); font-size: 12px; letter-spacing:.12em; text-transform:uppercase; opacity:.7; }
+.foot .links a:hover{ opacity:1; color: var(--caramel); }
+.foot .line{
+  text-align:center; font-family: var(--f-stencil); font-size: 18px; color: rgba(242,235,222,.5);
+  margin-top: 50px; padding-top: 22px; border-top: 1px solid var(--rule);
+}
+.foot .line .horns{ color: var(--caramel); }
+
+/* ─── decorative lightning bolts ─── */
+.bolt-art{
+  position:absolute; pointer-events:none; opacity:.07;
+}
+</style>
+</head>
+<body>
+
+<!-- ─────── TOP BAR ─────── -->
+<header class="topbar">
+  <div class="brand">
+    <img src="assets/logo.png" alt="" />
+    <span data-t="brand">Vira-Latas<br/><small>Metaleiros · HH</small></span>
+  </div>
+  <nav>
+    <a href="#shows" data-t="nav.shows">Shows</a>
+    <a href="#about" data-t="nav.about">About</a>
+    <a href="#connect" data-t="nav.connect">Connect</a>
+  </nav>
+  <div class="lang" role="group" aria-label="Language">
+    <button data-lang="en" aria-pressed="true">EN</button>
+    <button data-lang="pt">PT</button>
+    <button data-lang="de">DE</button>
+  </div>
+</header>
+
+<main>
+
+<!-- ─────── HERO ─────── -->
+<section class="hero grain">
+  <div class="stage-lights"></div>
+  <div class="crowd"></div>
+  <div class="hero-inner">
+    <div class="pretitle" data-t="hero.pre">EST. HAMBURG · 2021 · 🤘</div>
+    <div class="hero-logo-wrap">
+      <img src="assets/logo.png" alt="Vira-Latas Metaleiros mascot — a friendly stray dog flanked by a fist throwing the horns and two beer steins" />
+    </div>
+    <h1 class="display">
+      <span class="first">Vira-Latas</span>
+      <span class="second">Metaleiros</span>
+    </h1>
+    <div class="tagline" data-t="tagline">Hamburg's scrappiest metalheads</div>
+    <p class="pitch" data-t="pitch">We're a pack of strays from Brazil, Hamburg, and everywhere in between — bonded by riffs, beer, and the long walk to the venue.</p>
+    <div class="cta-row">
+      <a class="btn btn-caramel" href="#shows"><span data-t="cta_shows">See upcoming shows</span> →</a>
+      <a class="btn" href="#connect"><span data-t="cta_join">Run with the pack</span></a>
+    </div>
+  </div>
+  <div class="scroll-cue">
+    <span>SCROLL</span>
+    <span class="dot"></span>
+  </div>
+</section>
+
+<!-- ─────── NEXT SHOW MARQUEE STRIP ─────── -->
+<div class="next-strip">
+  <div class="marquee">
+    <span>⚡ NEXT SHOW · GOJIRA + MASTODON + LORNA SHORE · SPORTHALLE HAMBURG · MAY 22</span>
+    <span>⚡ SAVE THE DATE · WACKEN OPEN AIR · JUL 30 — AUG 02</span>
+    <span>⚡ BRAZILIAN NIGHT · SEPULTURA + SODOM · GRUENSPAN · JUN 18</span>
+    <span>⚡ NEXT SHOW · GOJIRA + MASTODON + LORNA SHORE · SPORTHALLE HAMBURG · MAY 22</span>
+    <span>⚡ SAVE THE DATE · WACKEN OPEN AIR · JUL 30 — AUG 02</span>
+  </div>
+</div>
+
+<!-- ─────── ABOUT ─────── -->
+<div class="torn" style="--c: var(--ink); background-color: var(--ink);"></div>
+<section id="about" class="about grain-light">
+  <div class="grid">
+    <div class="sidecar">
+      <div class="def-card">
+        <div class="head">DEFINITION · BR-PT</div>
+        <div class="word">vi·ra-la·ta</div>
+        <div class="pos">noun, masculine</div>
+        <ol>
+          <li><span>1.</span> A mutt. A stray dog of no particular pedigree.</li>
+          <li><span>2.</span> The friendliest creature on any Brazilian street.</li>
+          <li><span>3.</span> <em>fig.</em> The lovable underdog. Us.</li>
+        </ol>
+      </div>
+      <div class="stats-card">
+        <div class="tag">⚡ <span data-t="stats_tag">BY THE NUMBERS</span></div>
+        <ul>
+          <li><span class="n">40<small style="font-size:.55em">+</small></span><span class="l" data-t="stat_regulars">regulars in the pack</span></li>
+          <li><span class="n">7</span><span class="l" data-t="stat_nat">nationalities</span></li>
+          <li><span class="n">∞</span><span class="l" data-t="stat_ubers">Ubers split at 2am</span></li>
+          <li><span class="n">'21</span><span class="l" data-t="stat_since">first show together</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="copy">
+      <div class="kicker" data-t="about_kicker">OUR STORY</div>
+      <h2><span data-t="about_h_a">Mutts of</span><br/><span class="ink" data-t="about_h_b">the metal scene</span></h2>
+      <p data-t="about_p1">We're a friend group, not a band. Majority Brazilian, with members from Portugal, Argentina, Germany, Poland, the UK and beyond — all of us washed up in Hamburg, all of us metalheads.</p>
+      <div class="pull"><span data-t="about_pull">A <em>vira-lata</em> isn't an insult. It's a badge of honour — the underdog, the survivor, the friendliest dog on the street.</span></div>
+      <p data-t="about_p3">We started by meeting at gigs, sharing tickets, splitting Ubers back from Markthalle at 2am. Now we travel as a pack — Wacken, Hellfest, every Tuesday-night thrash show nobody else heard about.</p>
+      <p data-t="about_p4"><strong>No fee, no application, no gatekeeping.</strong> Just: come headbang with us and drink a beer.</p>
+    </div>
+  </div>
+</section>
+<div class="torn torn-flip" style="--c: var(--ink); background-color: var(--bone);"></div>
+
+<!-- ─────── SHOWS ─────── -->
+<section id="shows" class="shows grain">
+  <div class="head">
+    <div>
+      <div class="kicker" data-t="shows_kicker">WHERE WE'LL BE HEADBANGING NEXT</div>
+      <h2>Up<span class="o">⚡</span>coming<br/>Shows</h2>
+    </div>
+    <p data-t="shows_intro">Concerts the crew is going to. If you see one you like, hit us on WhatsApp — there's always room for one more mutt.</p>
+  </div>
+
+  <div class="poster-list" id="poster-list"></div>
+</section>
+
+<!-- ─────── CONNECT ─────── -->
+<div class="torn" style="--c: var(--slate-deep); background-color: var(--ink);"></div>
+<section id="connect" class="connect grain">
+  <div class="kicker" data-t="connect_kicker">RUN WITH US</div>
+  <h2 data-t="connect_h">Plug into the pack</h2>
+  <p data-t="connect_body">Instagram is the public face — photos, stories, post-show chaos. Everything else runs on three little tools the crew built itself.</p>
+
+  <a class="ig-hero" href="https://instagram.com/viralatasmetaleiros" target="_blank" rel="noopener">
+    <svg class="icon" viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.9.9 1.4.2.4.4 1.1.4 2.2.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.9.7-1.4.9-.4.2-1.1.4-2.2.4-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.9-.9-1.4-.2-.4-.4-1.1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.9-.7 1.4-.9.4-.2 1.1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.2 0-3.5 0-4.7.1-1.1.1-1.7.2-2.1.4-.5.2-.9.4-1.2.8-.4.4-.6.8-.8 1.2-.2.4-.3 1-.4 2.1-.1 1.2-.1 1.5-.1 4.7s0 3.5.1 4.7c.1 1.1.2 1.7.4 2.1.2.5.4.9.8 1.2.4.4.8.6 1.2.8.4.2 1 .3 2.1.4 1.2.1 1.5.1 4.7.1s3.5 0 4.7-.1c1.1-.1 1.7-.2 2.1-.4.5-.2.9-.4 1.2-.8.4-.4.6-.8.8-1.2.2-.4.3-1 .4-2.1.1-1.2.1-1.5.1-4.7s0-3.5-.1-4.7c-.1-1.1-.2-1.7-.4-2.1-.2-.5-.4-.9-.8-1.2-.4-.4-.8-.6-1.2-.8-.4-.2-1-.3-2.1-.4-1.2-.1-1.5-.1-4.7-.1zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8zm0 8.1a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4zm5.1-8.3a1.15 1.15 0 1 1 0-2.3 1.15 1.15 0 0 1 0 2.3z"/></svg>
+    <div>
+      <h3>Instagram</h3>
+      <div class="handle">@viralatasmetaleiros</div>
+      <div class="note" data-t="ig_note">Photos, stories, post-show chaos</div>
+    </div>
+    <span class="arrow">↗</span>
+  </a>
+
+  <div class="tools-head"><span data-t="tools_head">Tools the pack built itself</span></div>
+  <div class="tools">
+    <a class="tool t1" href="#">
+      <span class="gly">VL</span>
+      <h4>Companion App</h4>
+      <div class="desc" data-t="tool_companion">Find the pack at the show. Live “we’re here” pins, meetup spot before doors, who’s already inside.</div>
+      <div class="pill"><span data-t="tool_companion_pill">iOS · Android</span><span class="arr">↗</span></div>
+    </a>
+    <a class="tool t2" href="#">
+      <span class="gly">÷</span>
+      <h4>Moshsplit</h4>
+      <div class="desc" data-t="tool_moshsplit">Split the Uber, split the kebab, split the ticket runs. So nobody is doing math at 3am after the gig.</div>
+      <div class="pill"><span data-t="tool_moshsplit_pill">Web app · In-pack only</span><span class="arr">↗</span></div>
+    </a>
+    <a class="tool t3" href="#">
+      <span class="gly">♬</span>
+      <h4>Setlist Viralatas</h4>
+      <div class="desc" data-t="tool_setlist">Every gig we’ve been to, every setlist we moshed through, every shitty phone video. Add yours.</div>
+      <div class="pill"><span data-t="tool_setlist_pill">Open archive</span><span class="arr">↗</span></div>
+    </a>
+  </div>
+</section>
+
+<!-- ─────── FOOTER ─────── -->
+<footer class="foot">
+  <div class="row">
+    <div class="brand">
+      <img src="assets/logo.png" alt="" />
+      <div>
+        <div class="lockup">Vira-Latas<br/>Metaleiros</div>
+        <small data-t="based">Hamburg, Germany 🤘</small>
+      </div>
+    </div>
+    <div class="links">
+      <a href="#about" data-t="nav.about">About</a>
+      <a href="#shows" data-t="nav.shows">Shows</a>
+      <a href="#connect" data-t="nav.connect">Connect</a>
+      <a href="https://instagram.com/viralatasmetaleiros" target="_blank" rel="noopener">@viralatasmetaleiros</a>
+    </div>
+  </div>
+  <div class="line">
+    <span data-t="footer_line">Made by mutts, for mutts. Em Hamburgo, com cerveja na mão.</span>
+    <span class="horns"> 🤘</span>
+  </div>
+</footer>
+
+</main>
+
+<script src="shared/i18n.js"></script>
+<script>
+/* ─── Render shows ─── */
+const list = document.getElementById('poster-list');
+function plus(arr){
+  return arr.map((b,i)=>`<span class="b">${b}</span>${i<arr.length-1?'<span class="plus">+</span>':''}`).join('');
+}
+function renderShows(lang){
+  const t = window.VL_I18N[lang];
+  list.innerHTML = window.VL_SHOWS.map(s=>{
+    const note = s.note ? `<div class="note">★ ${s.note[lang]||s.note.en}</div>` : '';
+    return `<article class="poster">
+      <div class="date">
+        <span class="day">${s.day}</span>
+        <span class="mon">${s.mon}</span>
+        <span class="wd">${s.weekday[lang]||s.weekday.en}</span>
+      </div>
+      <div class="body">
+        <div>
+          <h3 class="bands">${plus(s.bands)}</h3>
+          <div class="meta">
+            <span>◆ ${s.venue}</span>
+            <span>● ${s.city}</span>
+          </div>
+          ${note}
+        </div>
+        <div class="right">
+          <a class="tix" href="${s.url}">${t.tickets} ↗</a>
+        </div>
+      </div>
+    </article>`;
+  }).join('');
+}
+
+/* ─── Language switching ─── */
+const langButtons = document.querySelectorAll('.lang button');
+const TEXTS = {
+  en: {
+    "hero.pre": "EST. HAMBURG · 2021 · 🤘",
+    "nav.shows":"Shows","nav.about":"About","nav.connect":"Connect",
+    "tagline":"Hamburg's scrappiest metalheads",
+    "pitch":"We're a pack of strays from Brazil, Hamburg, and everywhere in between — bonded by riffs, beer, and the long walk to the venue.",
+    "cta_shows":"See upcoming shows","cta_join":"Run with the pack",
+    "about_kicker":"OUR STORY","about_h_a":"Mutts of","about_h_b":"the metal scene",
+    "about_pull":"A <em>vira-lata</em> isn't an insult. It's a badge of honour — the underdog, the survivor, the friendliest dog on the street.",
+    "about_p1":"We're a friend group, not a band. Majority Brazilian, with members from Portugal, Argentina, Germany, Poland, the UK and beyond — all of us washed up in Hamburg, all of us metalheads.",
+    "about_p3":"We started by meeting at gigs, sharing tickets, splitting Ubers back from Markthalle at 2am. Now we travel as a pack — Wacken, Hellfest, every Tuesday-night thrash show nobody else heard about.",
+    "about_p4":"<strong>No fee, no application, no gatekeeping.</strong> Just: come headbang with us and drink a beer.",
+    "shows_kicker":"WHERE WE'LL BE HEADBANGING NEXT",
+    "shows_intro":"Concerts the crew is going to. If you see one you like, slide into our Instagram DMs — there's always room for one more mutt in the pack.",
+    "stats_tag":"BY THE NUMBERS",
+    "stat_regulars":"regulars in the pack",
+    "stat_nat":"nationalities",
+    "stat_ubers":"Ubers split at 2am",
+    "stat_since":"first show together",
+    "connect_kicker":"RUN WITH US","connect_h":"Plug into the pack",
+    "connect_body":"Instagram is the public face — photos, stories, post-show chaos. Everything else runs on three little tools the crew built itself.",
+    "ig_note":"Photos, stories, post-show chaos",
+    "tools_head":"Tools the pack built itself",
+    "tool_companion":"Find the pack at the show. Live “we’re here” pins, meetup spot before doors, who’s already inside.",
+    "tool_companion_pill":"iOS · Android",
+    "tool_moshsplit":"Split the Uber, split the kebab, split the ticket runs. So nobody is doing math at 3am after the gig.",
+    "tool_moshsplit_pill":"Web app · In-pack only",
+    "tool_setlist":"Every gig we’ve been to, every setlist we moshed through, every shitty phone video. Add yours.",
+    "tool_setlist_pill":"Open archive",
+    "based":"Hamburg, Germany 🤘",
+    "footer_line":"Made by mutts, for mutts. Em Hamburgo, com cerveja na mão."
+  },
+  pt: {
+    "hero.pre": "DESDE HAMBURGO · 2021 · 🤘",
+    "nav.shows":"Rolês","nav.about":"História","nav.connect":"Cola",
+    "tagline":"Os vira-latas mais bagunceiros de Hamburgo",
+    "pitch":"Somos uma matilha de cachorro caramelo — do Brasil, de Hamburgo e tudo mais — irmanados por riff, cerveja e aquela caminhada longa até o show.",
+    "cta_shows":"Ver os próximos rolês","cta_join":"Cola com a matilha",
+    "about_kicker":"A NOSSA HISTÓRIA","about_h_a":"Os vira-latas","about_h_b":"do metal",
+    "about_pull":"<em>Vira-lata</em> não é xingamento, é título. É o azarão, o sobrevivente, o cachorro mais simpático da rua.",
+    "about_p1":"A gente não é banda, é grupo de amigo. Maioria brasileiro, com gente de Portugal, Argentina, Alemanha, Polônia, Inglaterra e mais — todo mundo parou em Hamburgo, todo mundo é metaleiro.",
+    "about_p3":"Começou nos shows: dividindo ingresso, dividindo Uber pra sair da Markthalle às 2 da manhã. Hoje a gente viaja em bando — Wacken, Hellfest, e aquele show de quinta que ninguém mais ouviu falar.",
+    "about_p4":"<strong>Sem mensalidade, sem inscrição, sem firula.</strong> Cola pra mosh e toma uma gelada com a gente.",
+    "shows_kicker":"ONDE A GENTE VAI METER O PESCOÇO",
+    "shows_intro":"Shows que a turma já tá indo. Bateu interesse num? Manda DM no Insta — sempre tem espaço pra mais um vira-lata na matilha.",
+    "stats_tag":"OS NÚMEROS",
+    "stat_regulars":"vira-latas na ativa",
+    "stat_nat":"nacionalidades",
+    "stat_ubers":"Ubers rachados às 2 da manhã",
+    "stat_since":"primeiro rolê juntos",
+    "connect_kicker":"COLA NA MATILHA","connect_h":"Pluga na matilha",
+    "connect_body":"Insta é a cara pública — foto, story, bagunça pós-show. O resto roda em três appzinhos que a própria turma fez.",
+    "ig_note":"Foto, story, bagunça pós-show",
+    "tools_head":"Os três appzinhos que a turma fez",
+    "tool_companion":"Acha a matilha no show. Pin de “estamos aqui” ao vivo, ponto de encontro antes da porta, quem já tá dentro.",
+    "tool_companion_pill":"iOS · Android",
+    "tool_moshsplit":"Racha o Uber, racha o kebab, racha o ingresso. Pra ninguém precisar fazer conta às 3 da manhã depois do show.",
+    "tool_moshsplit_pill":"App web · Só pra matilha",
+    "tool_setlist":"Todo show que a gente foi, todo setlist que a gente cantou, todo vídeo tremido de celular. Manda o seu.",
+    "tool_setlist_pill":"Acervo aberto",
+    "based":"Hamburgo, Alemanha 🤘",
+    "footer_line":"Feito por vira-lata, pra vira-lata. Em Hamburgo, com a gelada na mão."
+  },
+  de: {
+    "hero.pre": "SEIT HAMBURG · 2021 · 🤘",
+    "nav.shows":"Konzerte","nav.about":"Über uns","nav.connect":"Kontakt",
+    "tagline":"Hamburgs räudigste Metalheads",
+    "pitch":"Wir sind ein Rudel Straßenköter — aus Brasilien, Hamburg und überall sonst — vereint durch Riffs, Bier und den langen Weg zur Halle.",
+    "cta_shows":"Kommende Konzerte","cta_join":"Mit dem Rudel los",
+    "about_kicker":"UNSERE GESCHICHTE","about_h_a":"Die Köter","about_h_b":"der Metalszene",
+    "about_pull":"Auf Portugiesisch heißt <em>vira-lata</em> Straßenköter — kein Schimpfwort, ein Ehrentitel.",
+    "about_p1":"Wir sind eine Freundesclique, keine Band. Mehrheitlich Brasilianer:innen, dazu Leute aus Portugal, Argentinien, Deutschland, Polen, UK und mehr — alle in Hamburg gelandet, alle Metalheads.",
+    "about_p3":"Angefangen hat es auf Konzerten: Tickets geteilt, Ubers von der Markthalle um 2 Uhr morgens geteilt. Heute reisen wir als Rudel — Wacken, Hellfest, jeder Dienstagabend-Thrash-Gig, den sonst niemand auf dem Schirm hatte.",
+    "about_p4":"<strong>Kein Beitrag, keine Bewerbung, keine Gatekeeper.</strong> Komm headbangen und trink ein Bier mit uns.",
+    "shows_kicker":"WO WIR ALS NÄCHSTES HEADBANGEN",
+    "shows_intro":"Konzerte, zu denen das Rudel geht. Interesse? Schreib uns auf Instagram — Platz für noch einen Köter im Rudel ist immer.",
+    "stats_tag":"IN ZAHLEN",
+    "stat_regulars":"Köter im Rudel",
+    "stat_nat":"Nationalitäten",
+    "stat_ubers":"Ubers nachts um 2 geteilt",
+    "stat_since":"erstes Konzert zusammen",
+    "connect_kicker":"KOMM INS RUDEL","connect_h":"Schließ dich dem Rudel an",
+    "connect_body":"Instagram ist das Schaufenster — Fotos, Stories, Chaos nach dem Konzert. Der Rest läuft über drei kleine Tools, die wir uns selbst gebaut haben.",
+    "ig_note":"Fotos, Stories, Chaos nach dem Konzert",
+    "tools_head":"Drei Tools, vom Rudel gebaut",
+    "tool_companion":"Finde das Rudel auf dem Konzert. Live-Pins, Treffpunkt vor Einlass, wer schon drin ist.",
+    "tool_companion_pill":"iOS · Android",
+    "tool_moshsplit":"Uber teilen, Kebab teilen, Ticketkosten teilen. Damit nachts um 3 niemand rechnen muss.",
+    "tool_moshsplit_pill":"Web-App · nur intern",
+    "tool_setlist":"Jedes Konzert, jede Setlist, jedes verwackelte Handy-Video. Pack deins dazu.",
+    "tool_setlist_pill":"Offenes Archiv",
+    "based":"Hamburg, Deutschland 🤘",
+    "footer_line":"Von Kötern, für Köter. In Hamburg, mit Bier in der Hand."
+  }
+};
+
+function applyLang(lang){
+  document.querySelectorAll('[data-t]').forEach(el=>{
+    const key = el.dataset.t;
+    const v = TEXTS[lang]?.[key];
+    if (v !== undefined) el.innerHTML = v;
+  });
+  langButtons.forEach(b=>b.setAttribute('aria-pressed', b.dataset.lang===lang ? 'true' : 'false'));
+  renderShows(lang);
+  document.documentElement.lang = lang;
+  window.VL_lang.set(lang);
+}
+langButtons.forEach(b=>b.addEventListener('click', ()=>applyLang(b.dataset.lang)));
+applyLang(window.VL_lang.get());
+</script>
+
+</body>
+</html>

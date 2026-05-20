@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Dark background with rounded corners -->
+  <rect width="32" height="32" rx="5" fill="#0d0d10"/>
+  <!-- Caramel top accent bar -->
+  <rect x="4" y="4" width="24" height="2" fill="#d97b2c"/>
+  <!-- VL in bold serif-style -->
+  <text x="16" y="22"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="14"
+    font-weight="700"
+    fill="#f2ebde"
+    text-anchor="middle"
+    letter-spacing="-0.5">VL</text>
+  <!-- Blood red bottom accent -->
+  <rect x="4" y="26" width="24" height="2" fill="#c01e1e"/>
+</svg>

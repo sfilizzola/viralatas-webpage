@@ -1,0 +1,115 @@
+/* ─── Vira-Latas Metaleiros · Shared brand tokens ───────────────────── */
+
+@import url('https://fonts.googleapis.com/css2?family=Metal+Mania&family=Rye&family=Bungee&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+:root{
+  /* core palette — bone white, deep charcoal, slate (logo bg), caramel (dog), blood red CTA */
+  --bone:        #f2ebde;
+  --bone-soft:   #e6dccb;
+  --paper:       #ebe2d0;
+  --ink:         #0d0d10;
+  --ink-soft:    #1a1a1f;
+  --charcoal:    #2a2a30;
+  --slate:       #3f4d60;       /* matches the logo background */
+  --slate-deep:  #2d3845;
+  --caramel:     #d97b2c;       /* the dog */
+  --caramel-hot: #f3953f;
+  --blood:       #c01e1e;       /* CTA accent */
+  --blood-bright:#e8261e;
+  --rule:        rgba(242,235,222,.18);
+
+  /* type */
+  --f-display: "Metal Mania", "Rye", "Bungee", system-ui, serif;
+  --f-stencil: "Rye", "Bungee", serif;
+  --f-pop:     "Bungee", "Rye", sans-serif;
+  --f-body:    "Space Grotesk", -apple-system, sans-serif;
+  --f-mono:    "JetBrains Mono", ui-monospace, monospace;
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family: var(--f-body);
+  color: var(--bone);
+  background: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ─── Grain + paper texture overlays ────────────────────────────────── */
+.grain::before{
+  content:""; position:absolute; inset:0; pointer-events:none; z-index:1;
+  background-image:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.92' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.35 0'/></filter><rect width='220' height='220' filter='url(%23n)' opacity='0.6'/></svg>");
+  mix-blend-mode: overlay;
+  opacity:.55;
+}
+.grain-light::before{ opacity:.35; mix-blend-mode: multiply; }
+
+/* ─── Display utilities ─────────────────────────────────────────────── */
+.display{
+  font-family: var(--f-display);
+  font-weight: 400;
+  letter-spacing:.01em;
+  line-height:.92;
+  text-transform: uppercase;
+}
+.stencil{ font-family: var(--f-stencil); letter-spacing:.02em; line-height:1; }
+.pop{ font-family: var(--f-pop); letter-spacing:.02em; }
+.mono{ font-family: var(--f-mono); }
+
+/* ─── Buttons ──────────────────────────────────────────────────────── */
+.btn{
+  display:inline-flex; align-items:center; gap:.6em;
+  font-family: var(--f-pop);
+  text-transform: uppercase;
+  letter-spacing:.06em;
+  font-size: 14px;
+  padding: 14px 22px;
+  border: 2px solid var(--bone);
+  background: transparent;
+  color: var(--bone);
+  text-decoration:none;
+  cursor:pointer;
+  transition: transform .12s ease, background .15s, color .15s, box-shadow .15s;
+  position:relative;
+}
+.btn:hover{ background: var(--bone); color: var(--ink); transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--blood); }
+.btn-blood{ background: var(--blood); border-color: var(--blood); color: var(--bone); }
+.btn-blood:hover{ background: var(--blood-bright); border-color: var(--blood-bright); color: var(--bone); box-shadow: 6px 6px 0 var(--caramel); }
+.btn-caramel{ background: var(--caramel); border-color: var(--caramel); color: var(--ink); }
+.btn-caramel:hover{ background: var(--caramel-hot); border-color: var(--caramel-hot); color: var(--ink); box-shadow: 6px 6px 0 var(--bone); }
+
+/* ─── Lightning + torn-edge dividers ────────────────────────────────── */
+.bolt{
+  display:inline-block; width:1em; height:1.2em; color: var(--caramel);
+  background: currentColor;
+  clip-path: polygon(55% 0, 0 55%, 38% 55%, 25% 100%, 100% 38%, 60% 38%, 80% 0);
+}
+
+/* horizontal torn-paper edge using SVG */
+.torn{
+  --c: var(--ink);
+  height: 28px; width:100%;
+  background-color: var(--c);
+  -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 28' preserveAspectRatio='none'><path d='M0,0 L1200,0 L1200,14 L1188,18 L1170,12 L1152,20 L1130,9 L1110,22 L1088,11 L1066,21 L1042,8 L1020,19 L998,10 L976,23 L952,12 L930,20 L908,9 L884,18 L862,11 L840,22 L818,10 L796,20 L772,8 L750,19 L728,12 L706,21 L682,9 L660,22 L638,10 L616,20 L592,11 L570,18 L548,9 L526,21 L502,12 L480,22 L458,10 L436,19 L412,8 L390,20 L368,11 L346,22 L322,9 L300,18 L278,12 L256,21 L232,10 L210,20 L188,11 L166,22 L142,9 L120,19 L98,8 L76,21 L52,11 L30,20 L8,12 L0,18 Z'/></svg>") center / 100% 100% no-repeat;
+          mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 28' preserveAspectRatio='none'><path d='M0,0 L1200,0 L1200,14 L1188,18 L1170,12 L1152,20 L1130,9 L1110,22 L1088,11 L1066,21 L1042,8 L1020,19 L998,10 L976,23 L952,12 L930,20 L908,9 L884,18 L862,11 L840,22 L818,10 L796,20 L772,8 L750,19 L728,12 L706,21 L682,9 L660,22 L638,10 L616,20 L592,11 L570,18 L548,9 L526,21 L502,12 L480,22 L458,10 L436,19 L412,8 L390,20 L368,11 L346,22 L322,9 L300,18 L278,12 L256,21 L232,10 L210,20 L188,11 L166,22 L142,9 L120,19 L98,8 L76,21 L52,11 L30,20 L8,12 L0,18 Z'/></svg>") center / 100% 100% no-repeat;
+}
+.torn-flip{ transform: scaleY(-1); }
+
+/* ─── Striped image placeholder ─────────────────────────────────────── */
+.placeholder{
+  background:
+    repeating-linear-gradient(135deg, rgba(242,235,222,.06) 0 14px, rgba(242,235,222,.02) 14px 28px),
+    var(--charcoal);
+  border: 1px dashed rgba(242,235,222,.22);
+  display:flex; align-items:flex-end; padding:14px;
+  color: rgba(242,235,222,.55);
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing:.04em;
+  text-transform: uppercase;
+}
+
+/* selection + scrollbars */
+::selection{ background: var(--caramel); color: var(--ink); }
