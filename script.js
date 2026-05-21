@@ -172,6 +172,17 @@ function setupActiveNav() {
   const navLinks = document.querySelectorAll('.topbar nav a[href^="#"]');
   if (!sections.length || !navLinks.length) return;
 
+  // Provide immediate feedback on click so the underline appears before the
+  // IntersectionObserver fires (avoids a visible delay during smooth-scroll).
+  navLinks.forEach(a => a.addEventListener('click', () => {
+    navLinks.forEach(l => l.classList.remove('active'));
+    a.classList.add('active');
+  }));
+
+  // threshold: 0.1 instead of 0.35 so tall sections (like #shows with many
+  // poster cards) can still trigger the observer — the old value required 35%
+  // of the section to be inside the effective viewport, which a long section
+  // could never reach.
   const obs = new IntersectionObserver(
     entries => {
       entries.forEach(e => {
@@ -183,7 +194,7 @@ function setupActiveNav() {
         }
       });
     },
-    { threshold: 0.35, rootMargin: '-80px 0px -40% 0px' }
+    { threshold: 0.1, rootMargin: '-80px 0px -40% 0px' }
   );
   sections.forEach(s => obs.observe(s));
 }
