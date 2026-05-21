@@ -42,7 +42,7 @@ window.T.en = {
   "tool_setlist":       "Create your playlists from the confirmed Wacken lineup. Get ready before you even set foot on the field.",
   "tool_setlist_pill":  "Tune in",
   "based":              "Hamburg, Germany 🤘",
-  "footer_line":        "Made by vira-latas, for vira-latas. Em Hamburgo, com cerveja na mão.",
+  "footer_line":        "Made by vira-latas, for vira-latas. In Hamburg, beer in hand.",
   "tickets":            "Tickets",
   "going":              "going",
   "def_head":           "DEFINITION · BR-PT",
