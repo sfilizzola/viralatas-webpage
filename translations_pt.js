@@ -35,13 +35,18 @@ window.T.pt = {
   "ig_note":            "Foto, story, bagunça pós-show",
   "tools_head":         "Os três appzinhos que a turma fez",
   "tool_companion":     "Encontra a matilha na multidão do Wacken. Localização ao vivo mesmo quando a internet cai — sabe onde a matilha está o tempo todo.",
-  "tool_companion_pill":"iOS · Android",
+  "tool_companion_pill":"Achar a matilha",
   "tool_moshsplit":     "Divide as despesas do festival sem drama. Melhor que aquele outro app que se diz esperto — feito pela matilha, pra matilha.",
-  "tool_moshsplit_pill":"App web",
+  "tool_moshsplit_pill":"Rachar o estrago",
   "tool_setlist":       "Cria suas playlists a partir do lineup confirmado do Wacken. Fica pronto antes de botar o pé no campo.",
-  "tool_setlist_pill":  "Lineup do Wacken",
+  "tool_setlist_pill":  "Dar o play",
   "based":              "Hamburgo, Alemanha 🤘",
   "footer_line":        "Feito por vira-lata, pra vira-lata. Em Hamburgo, com a gelada na mão.",
   "tickets":            "Ingressos",
-  "going":              "indo"
+  "going":              "indo",
+  "def_head":           "DEFINIÇÃO · BR-PT",
+  "def_pos":            "substantivo, masculino",
+  "def_1":              "Um vira-lata. Um cachorro de rua sem raça definida.",
+  "def_2":              "A criatura mais simpática de qualquer rua brasileira.",
+  "def_3":              "<em>fig.</em> O metaleiro incrível. A gente."
 };

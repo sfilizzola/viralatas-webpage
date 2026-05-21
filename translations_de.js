@@ -35,13 +35,18 @@ window.T.de = {
   "ig_note":            "Fotos, Stories, Chaos nach dem Konzert",
   "tools_head":         "Drei Tools, vom Rudel gebaut",
   "tool_companion":     "Finde das Rudel in der Wacken-Menge. Live-Standort auch wenn das Internet ausfällt — immer wissen, wo das Rudel ist.",
-  "tool_companion_pill":"iOS · Android",
+  "tool_companion_pill":"Rudel finden",
   "tool_moshsplit":     "Teile deine Festivalausgaben ohne Drama. Besser als die andere App, die sich klug nennt — vom Rudel gebaut, für das Rudel.",
-  "tool_moshsplit_pill":"Web-App",
+  "tool_moshsplit_pill":"Schaden teilen",
   "tool_setlist":       "Erstelle deine Playlists aus dem bestätigten Wacken-Lineup. Sei bereit, bevor du das Gelände betrittst.",
-  "tool_setlist_pill":  "Wacken-Lineup",
+  "tool_setlist_pill":  "Reinhören",
   "based":              "Hamburg, Deutschland 🤘",
   "footer_line":        "Von Vira-Latas, für Vira-Latas. In Hamburg, mit Bier in der Hand.",
   "tickets":            "Tickets",
-  "going":              "dabei"
+  "going":              "dabei",
+  "def_head":           "DEFINITION · BR-PT",
+  "def_pos":            "Substantiv, maskulin",
+  "def_1":              "Ein Mischling. Ein Straßenhund ohne bestimmte Abstammung.",
+  "def_2":              "Das freundlichste Wesen auf jeder brasilianischen Straße.",
+  "def_3":              "<em>fig.</em> Der unglaubliche Metalhead. Wir."
 };

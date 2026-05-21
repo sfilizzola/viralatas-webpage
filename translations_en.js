@@ -36,13 +36,18 @@ window.T.en = {
   "email_label":        "Drop us a line",
   "tools_head":         "Tools the pack built itself",
   "tool_companion":     "Find the crew in the Wacken crowd. Live location even when the internet dies \u2014 know where the pack is at all times.",
-  "tool_companion_pill":"iOS · Android",
+  "tool_companion_pill":"Find the pack",
   "tool_moshsplit":     "Split your festival expenses without the drama. Better than that other app that claims to be wise \u2014 built for the pack, by the pack.",
-  "tool_moshsplit_pill":"Web app",
+  "tool_moshsplit_pill":"Split the damage",
   "tool_setlist":       "Create your playlists from the confirmed Wacken lineup. Get ready before you even set foot on the field.",
-  "tool_setlist_pill":  "Wacken lineup",
+  "tool_setlist_pill":  "Tune in",
   "based":              "Hamburg, Germany 🤘",
   "footer_line":        "Made by vira-latas, for vira-latas. Em Hamburgo, com cerveja na mão.",
   "tickets":            "Tickets",
-  "going":              "going"
+  "going":              "going",
+  "def_head":           "DEFINITION · BR-PT",
+  "def_pos":            "noun, masculine",
+  "def_1":              "A mutt. A stray dog of no particular pedigree.",
+  "def_2":              "The friendliest creature on any Brazilian street.",
+  "def_3":              "<em>fig.</em> The incredible metalhead. Us."
 };
