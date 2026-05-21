@@ -168,35 +168,28 @@ function setupTopbar() {
 
 /* ─── Active nav link ───────────────────────────────────────────────────── */
 function setupActiveNav() {
-  const sections = document.querySelectorAll('section[id]');
+  const sections = [...document.querySelectorAll('section[id]')];
   const navLinks = document.querySelectorAll('.topbar nav a[href^="#"]');
   if (!sections.length || !navLinks.length) return;
 
-  // Provide immediate feedback on click so the underline appears before the
-  // IntersectionObserver fires (avoids a visible delay during smooth-scroll).
-  navLinks.forEach(a => a.addEventListener('click', () => {
-    navLinks.forEach(l => l.classList.remove('active'));
-    a.classList.add('active');
-  }));
+  // Trigger line: a section becomes active once its top edge scrolls above
+  // this many pixels from the top of the viewport (topbar height + buffer).
+  const TRIGGER = 120;
 
-  // threshold: 0.1 instead of 0.35 so tall sections (like #shows with many
-  // poster cards) can still trigger the observer — the old value required 35%
-  // of the section to be inside the effective viewport, which a long section
-  // could never reach.
-  const obs = new IntersectionObserver(
-    entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          const id = e.target.getAttribute('id');
-          navLinks.forEach(a =>
-            a.classList.toggle('active', a.getAttribute('href') === `#${id}`)
-          );
-        }
-      });
-    },
-    { threshold: 0.1, rootMargin: '-80px 0px -40% 0px' }
-  );
-  sections.forEach(s => obs.observe(s));
+  function update() {
+    // Walk sections in DOM order; the last one whose top is above the trigger
+    // line is the one currently "in view".
+    let activeId = null;
+    for (const s of sections) {
+      if (s.getBoundingClientRect().top <= TRIGGER) activeId = s.id;
+    }
+    navLinks.forEach(a =>
+      a.classList.toggle('active', activeId ? a.getAttribute('href') === `#${activeId}` : false)
+    );
+  }
+
+  window.addEventListener('scroll', update, { passive: true });
+  update(); // set correct state on page load / back-navigation
 }
 
 /* ─── Hero cursor glow (fine-pointer devices only) ─────────────────────── */
