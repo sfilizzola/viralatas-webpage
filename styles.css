@@ -640,6 +640,30 @@ section[id] { scroll-margin-top: 80px; }
 .connect .ig-hero .arrow  { position: absolute; top: 22px; right: 22px; font-family: var(--f-display); font-size: 28px; color: var(--bone); transition: transform .2s; }
 .connect .ig-hero:hover .arrow { transform: translate(6px,-6px); }
 
+/* Email card */
+.connect .email-link {
+  max-width: 900px; margin: 0 auto 26px;
+  display: flex; align-items: center; gap: 28px;
+  padding: 28px 32px;
+  background: var(--ink);
+  border: 2px solid var(--bone);
+  text-decoration: none; color: var(--bone);
+  text-align: left;
+  position: relative; overflow: hidden;
+  transition: transform .15s, box-shadow .15s, background .15s;
+}
+.connect .email-link:hover {
+  transform: translate(-4px,-4px);
+  box-shadow: 10px 10px 0 var(--caramel);
+  background: var(--slate-deep);
+}
+.connect .email-link:hover svg { stroke: var(--bone); }
+.connect .email-link svg { flex: 0 0 auto; stroke: var(--caramel); transition: stroke .15s; }
+.connect .email-link h3  { font-family: var(--f-display); font-size: 38px; margin: 0 0 4px; text-transform: uppercase; line-height: 1; }
+.connect .email-link .handle { font-family: var(--f-mono); font-size: 13px; letter-spacing: .08em; color: rgba(242,235,222,.7); }
+.connect .email-link .arrow  { position: absolute; top: 22px; right: 22px; font-family: var(--f-display); font-size: 28px; color: var(--bone); transition: transform .2s; }
+.connect .email-link:hover .arrow { transform: translate(6px,-6px); }
+
 /* Tools row */
 .connect .tools-head {
   max-width: 900px; margin: 36px auto 14px;
@@ -733,6 +757,8 @@ section[id] { scroll-margin-top: 80px; }
   .connect .tools    { grid-template-columns: 1fr; }
   .connect .ig-hero  { flex-direction: column; text-align: center; gap: 14px; padding: 30px 22px; }
   .connect .ig-hero .arrow { display: none; }
+  .connect .email-link { flex-direction: column; text-align: center; gap: 14px; padding: 30px 22px; }
+  .connect .email-link .arrow { display: none; }
 }
 
 @media (max-width: 480px) {

@@ -61,7 +61,7 @@ function buildMarquee() {
   });
 
   if (!items.length) {
-    track.innerHTML = '<span>\u26a1 VIRA-LATAS METALEIROS \u00b7 HAMBURG \u00b7 EST. 2021</span><span>\u26a1 VIRA-LATAS METALEIROS \u00b7 HAMBURG \u00b7 EST. 2021</span>';
+    track.innerHTML = '<span>\u26a1 VIRA-LATAS METALEIROS \u00b7 HAMBURG \u00b7 EST. 2022</span><span>\u26a1 VIRA-LATAS METALEIROS \u00b7 HAMBURG \u00b7 EST. 2022</span>';
     return;
   }
 
