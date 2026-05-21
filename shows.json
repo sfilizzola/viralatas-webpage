@@ -9,7 +9,7 @@
     "city": "Berlin",
     "going": 0,
     "status": "soon",
-    "url": "#"
+    "url": "https://www.eventim.de/artist/foo-fighters/"
   },
   {
     "date": "2026-07-02",
@@ -21,7 +21,7 @@
     "city": "Hamburg",
     "going": 0,
     "status": "soon",
-    "url": "#"
+    "url": "https://www.stadtparkopenair.de/veranstaltung/zz-top/"
   },
   {
     "date": "2026-07-10",
@@ -30,10 +30,10 @@
     "weekday": { "en": "FRI", "pt": "SEX", "de": "FR" },
     "bands": ["System of a Down", "Queens of the Stone Age", "Acid Bath"],
     "venue": "Open Air Park",
-    "city": "D\u00fcsseldorf",
+    "city": "Düsseldorf",
     "going": 0,
     "status": "soon",
-    "url": "#"
+    "url": "https://www.livenation.de/en/event/system-of-a-down-d%C3%BCsseldorf-tickets-edp1619279"
   },
   {
     "date": "2026-07-26",
@@ -45,12 +45,12 @@
     "city": "Wacken",
     "going": 0,
     "note": {
-      "en": "26 JUL \u2013 1 AUG \u00b7 The big one. We camp together.",
-      "pt": "26 JUL \u2013 1 AGO \u00b7 O grande. A gente acampa junto.",
-      "de": "26. JUL \u2013 1. AUG \u00b7 Der gro\u00dfe Termin. Wir campen zusammen."
+      "en": "26 JUL – 1 AUG · The big one. We camp together.",
+      "pt": "26 JUL – 1 AGO · O grande. A gente acampa junto.",
+      "de": "26. JUL – 1. AUG · Der große Termin. Wir campen zusammen."
     },
     "status": "soon",
-    "url": "#"
+    "url": "https://www.wacken.com/en/tickets-shop/woa-2026-tickets/"
   },
   {
     "date": "2026-08-12",
@@ -62,12 +62,12 @@
     "city": "Dinkelsbühl",
     "going": 0,
     "note": {
-      "en": "12\u201315 AUG",
-      "pt": "12\u201315 AGO",
-      "de": "12.\u201315. AUG"
+      "en": "12–15 AUG",
+      "pt": "12–15 AGO",
+      "de": "12.–15. AUG"
     },
     "status": "later",
-    "url": "#"
+    "url": "https://www.summer-breeze.de/en/tickets/"
   },
   {
     "date": "2026-09-11",
@@ -79,12 +79,12 @@
     "city": "Athens",
     "going": 0,
     "note": {
-      "en": "11\u201312 SEP",
-      "pt": "11\u201312 SET",
-      "de": "11.\u201312. SEP"
+      "en": "11–12 SEP",
+      "pt": "11–12 SET",
+      "de": "11.–12. SEP"
     },
     "status": "later",
-    "url": "#"
+    "url": "http://rockhardfestival.gr/tickets"
   },
   {
     "date": "2026-10-19",
@@ -96,19 +96,19 @@
     "city": "Hamburg",
     "going": 0,
     "status": "later",
-    "url": "#"
+    "url": "https://www.1a-portale.de/veranstaltungen/event/ronnie-romero-gus-g-convergence-fest-2026-407846/"
   },
   {
     "date": "2026-10-21",
     "day": "21",
     "mon": "OCT",
     "weekday": { "en": "WED", "pt": "QUA", "de": "MI" },
-    "bands": ["Fabio Lione \u2014 Dawn of Victory (Orchestra Tour)"],
+    "bands": ["Fabio Lione — Dawn of Victory (Orchestra Tour)"],
     "venue": "TBA",
     "city": "Hamburg",
     "going": 0,
     "status": "later",
-    "url": "#"
+    "url": "https://esteticatorta.myshopify.com/products/fabio-lione-hamburg"
   },
   {
     "date": "2026-10-22",
@@ -120,7 +120,7 @@
     "city": "Hamburg",
     "going": 0,
     "status": "later",
-    "url": "#"
+    "url": "https://inselparkarena.de/event/dimmu-borgir-behemoth/"
   },
   {
     "date": "2026-11-01",
@@ -132,7 +132,7 @@
     "city": "Hamburg",
     "going": 0,
     "status": "later",
-    "url": "#"
+    "url": "https://www.reservix.de/tickets-deep-purple-in-hamburg-sporthalle-hamburg-am-1-11-2026/e2487309"
   },
   {
     "date": "2026-12-13",
@@ -140,10 +140,10 @@
     "mon": "DEC",
     "weekday": { "en": "SUN", "pt": "DOM", "de": "SO" },
     "bands": ["Soen", "Tribulation", "Vulkan"],
-    "venue": "Uebel & Gef\u00e4hrlich",
+    "venue": "Uebel & Gefährlich",
     "city": "Hamburg",
     "going": 0,
     "status": "later",
-    "url": "#"
+    "url": "https://www.songkick.com/concerts/43164846-soen-at-uebel-and-gefahrlich"
   }
 ]
